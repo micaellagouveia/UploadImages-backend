@@ -9,7 +9,7 @@ const cors = require('cors')
 const app = express()
 
 //Database setup
-mongoose.connect("mongodb://localhost:27017/upload", {
+mongoose.connect("mongodb+srv://deploy:chocoQQ123@cluster0-lo5vd.mongodb.net/test?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 })
