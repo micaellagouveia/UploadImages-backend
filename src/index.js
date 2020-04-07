@@ -1,4 +1,4 @@
-require('dotenv').config()
+const dotenv = require('dotenv')
 
 const express = require('express')
 const morgan = require('morgan')
@@ -8,10 +8,17 @@ const cors = require('cors')
 
 const app = express()
 
+dotenv.config()
+
+console.log(process.env.MONGO_URL)
+
 //Database setup
-mongoose.connect("mongodb+srv://deploy:chocoQQ123@cluster0-lo5vd.mongodb.net/test?retryWrites=true&w=majority", {
+mongoose.connect(process.env.MONGO_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
+}, function(err){
+    if(err) console.log('connection error: ', err)
+    else{ console.log("mongodb connection successful")}
 })
 
 app.use(cors())
